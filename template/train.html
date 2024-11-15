@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,
+initial-scale=1.0">
+<title>Train Booking - Travel Management System</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="booking-container">
+<h1>Train Booking</h1>
+<form action="/book-train" method="POST"
+class="booking-form">
+<!-- Personal Information Section -->
+<fieldset>
+<legend>Personal Information</legend>
+<div class="input-group">
+<label for="fullname">Full Name</label>
+<input type="text" id="fullname" name="fullname"
+required>
+</div>
+<div class="input-group">
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" name="phone"
+required>
+</div>
+<div class="input-group">
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email"
+required>
+</div>
+</fieldset>
+<!-- Travel Details Section -->
+<fieldset>
+<legend>Travel Details</legend>
+<div class="input-group">
+<label for="departure-city">Departure City</label>
+<input type="text" id="departure-city"
+name="departure-city" required>
+</div>
+<div class="input-group">
+<label for="destination-city">Destination City</label>
+<input type="text" id="destination-city"
+name="destination-city" required>
+</div>
+<div class="input-group">
+<label for="travel-date">Travel Date</label>
+<input type="date" id="travel-date"
+name="travel-date" required>
+</div>
+<div class="input-group">
+<label for="num-passengers">Number of
+Passengers</label>
+<input type="number" id="num-passengers"
+name="num-passengers" min="1" max="10" required>
+</div>
+</fieldset>
+<!-- Train Preferences Section -->
+<fieldset>
+<legend>Train Class Preferences</legend>
+<div class="input-group">
+<label for="train-class">Select Train Class</label>
+<select id="train-class" name="train-class" required>
+<option value="" disabled selected>Select a
+class</option>
+<option value="first-class">First Class</option>
+<option value="second-class">Second
+Class</option>
+<option value="sleeper">Sleeper Class</option>
+</select>
+</div>
+</fieldset>
+<!-- Payment Information Section -->
+<fieldset>
+<legend>Payment Information</legend>
+<div class="input-group">
+<label for="card-number">Credit/Debit Card
+Number</label>
+<input type="text" id="card-number"
+name="card-number" pattern="\d{16}" required>
+</div>
+<div class="input-row">
+<div class="input-group">
+<label for="exp-date">Expiration Date
+(MM/YY)</label>
+<input type="text" id="exp-date" name="exp-date"
+pattern="\d{2}/\d{2}" required>
+</div>
+<div class="input-group">
+<label for="cvv">Security Code (CVV)</label>
+<input type="text" id="cvv" name="cvv"
+pattern="\d{3}" required>
+</div>
+</div>
+</fieldset>
+<!-- Submit Button -->
+<div class="input-group">
+<button type="submit" class="booking-btn">Book
+Now</button>
+</div>
+</form>
+</div>
+</body>
+</html>
