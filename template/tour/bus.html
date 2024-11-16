@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin : 0;
+            padding : 0;
+            box-sizing : border-box;
+            
+        }
+        body{
+            background-color: #ebf5fc;
+        }
+        .box{
+            display: flex;
+            justify-content: space-around;
+            background-color: rgb(230, 199, 199);
+            padding: 24px;
+            max-width: 90vw;
+            margin: 34px auto;
+            cursor: pointer;
+            border-radius: 40px;
+            font-size: 24px;
+            transition: all 1s ease-out;
+        }
+        .box:hover{
+            color: white;
+            background: linear-gradient(45deg,#b95ce4,#4f29cd);
+        }
+        .break{
+            
+            padding: auto;
+        }
+        .break h2{
+            text-align: center;
+            font-size: 48px;
+        }
+        .sp{
+            display: flex;
+            justify-content: space-around;
+            background-color: rgb(189, 175, 238);
+            padding: 24px;
+            max-width: 90vw;
+            margin: 34px auto;
+            font-size: 30px;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <section class="break">
+        <h2>Bus Lists</h2>
+        <div class="sp">
+            <span>Name</span>
+            <span>Provider Name</span>
+            <span>Price</span>
+        </div>
+               
+            {% for i in bus %}
+            <div class="box">
+                <span>{{i.customer}}</span>
+                <span>{{i.provider_name}}</span>
+                <span>{{i.price}}</span>
+            </div>
+            {% endfor%}
+    </section>       
+</body>
+</html>
