@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- for footer -->
+    <link rel="stylesheet" href="{% static 'base/footer.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- for nav -->
+    <link rel="stylesheet" href="{% static 'base/navbar.css' %}">
+    <!-- for package -->
+    <link rel="stylesheet" href="{% static 'package/package.css' %}">
+
+
+  
+
+
+   
+    <title>Base</title>
+</head>
+<body>
+
+    {% include 'navbar.html'%}
+    {% block content %}
+    
+
+    {% endblock %}
+
+    {% include 'footer.html'%}
+
+</body>
+</html>

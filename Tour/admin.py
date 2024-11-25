@@ -10,4 +10,5 @@ admin.site.register(Flight)
 admin.site.register(Bus)
 admin.site.register(Car)
 admin.site.register(Payment)
+admin.site.register(Profile)
 

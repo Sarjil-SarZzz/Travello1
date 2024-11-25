@@ -1,0 +1,8 @@
+<h2>Book Package: {{ package.title }}</h2>
+<p>Price: {{ package.price }}</p>
+<p>Duration: {{ package.duration }} days</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Book Now</button>
+</form>

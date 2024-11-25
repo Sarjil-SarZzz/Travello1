@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{{package.destination}}
+{{package.title}}
+{{package.duration}}
+{{package.description}}
+<div class="button">
+  <a class="add-package" href="{% url 'update_package' package.id %}">Update Package</a>
+</div>
+<div class="button">
+  
+    <a class="c" href="{% url 'delete_package' package.id %}">Delete Package</a>
+</div>
+
+<div class="button">
+  
+  <a class="add-package" href="{% url 'book_package' package.id %}">Book Now</a>
+
+</div>
+{% endblock %}

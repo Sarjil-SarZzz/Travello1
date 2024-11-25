@@ -1,73 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
-            margin : 0;
-            padding : 0;
-            box-sizing : border-box;
-            
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+
         }
-        body{
-            background-color: #ebf5fc;
-        }
-        .box{
+
+        body {
             display: flex;
-            justify-content: space-around;
-            background-color: rgb(230, 199, 199);
-            padding: 24px;
-            max-width: 90vw;
-            margin: 34px auto;
-            cursor: pointer;
-            border-radius: 40px;
-            font-size: 24px;
-            transition: all 1s ease-out;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        .box:hover{
+
+        .card {
+            position: relative;
+            width: 320px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card .imgBx {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            background: #f00;
+            border-radius: 15px;
+            /* background: url(Travello1/media/tour/package/2022-Novitec-Ferrari-SF90-Spider-001-1440w.jpg);
+            background-size: cover; */
+        }
+
+        .card .imgBx::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: transparent;
+            border-radius: 50%;
+            box-shadow: -10px 10px 0 #fff;
+
+        }
+
+        .card .imgBx::after {
+            content: '';
+            position: absolute;
+            bottom: 70px;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background: transparent;
+            border-radius: 50%;
+            box-shadow: -10px 10px 0 #fff;
+
+        }
+
+        .card .content {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            background: #232949;
+            border-radius: 15px;
+            border-top-left-radius: 0;
+            padding: 0 35px;
+        }
+
+        .card .content {
+            color: #fff;
+        }
+
+        .card .content .price {
+            position: absolute;
+            top: -80px;
+            left: 0;
+            height: 80px;
+            width: 50%;
+            background: #232949;
+            border-top: 10px solid #fff;
+            border-right: 10px solid #fff;
+            border-top-right-radius: 25px;
+        }
+
+        .card .content .price::before {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: transparent;
+            border-radius: 50%;
+            box-shadow: -10px -10px 0 #fff;
+        }
+
+        .card .content .price::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: -25px;
+            width: 25px;
+            height: 25px;
+            background: transparent;
+            border-radius: 50%;
+            box-shadow: -10px 10px 0 #232949;
+        }
+
+        .card .content .price a {
+            position: relative;
+            background: #fff;
+            padding: 10px 20px;
+            margin: 15px 15px;
+            display: block;
+            border-radius: 7px;
+            color: #333;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .Button a{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgb(60, 65, 212);
+            border-radius: 15px;
+            margin: 25px 25px;
             color: white;
-            background: linear-gradient(45deg,#b95ce4,#4f29cd);
+            text-decoration: none;
+            padding: 8px ;
         }
-        .break{
-            
-            padding: auto;
-        }
-        .break h2{
-            text-align: center;
-            font-size: 48px;
-        }
-        .sp{
-            display: flex;
-            justify-content: space-around;
-            background-color: rgb(189, 175, 238);
-            padding: 24px;
-            max-width: 90vw;
-            margin: 34px auto;
-            font-size: 30px;
-            border-radius: 10px;
-        }
-
     </style>
-
 </head>
+
 <body>
-    <section class="break">
-        <h2>Hotels</h2>
-        <div class="sp">
-            <span>Name</span>
-            <span>Location</span>
-            <span>Price</span>
-        </div>
-               
-            {% for i in hotel %}
-            <div class="box">
-                <span>{{i.name}}</span>
-                <span>{{i.location}}</span>
-                <span>{{i.price}}</span>
+    <div class="container">
+
+        {% for i in hotel %}
+        <div class="card">
+            <div class="imgBx"></div>
+            <div class="content">
+                <span class="price">
+                    <a href="#">{{i.price}}</a>
+                </span>
+                <ul>
+                    <li>{{i.location}}</li>
+                    <li>{{i.description}}</li>
+                    <li>{{i.name}}</li>
+                </ul>
+                <span class="Button"><a href="#">BOOK NOW</a></span>
             </div>
-            {% endfor%}
-    </section>       
+        </div>
+        {% endfor %}
+    </div>
 </body>
+
 </html>
