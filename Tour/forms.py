@@ -8,6 +8,8 @@ class PackageForm(ModelForm):
         model = Package
         fields = '__all__'
 
+
+
 class ProfileForm(ModelForm):
     class Meta:
         model = Profile
@@ -21,3 +23,16 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = ['travel_date']  # user can choose travel date others will be auto filled.
+
+
+
+class FlightForm(ModelForm):
+    class Meta:
+        model = Flight
+        fields = '__all__'
+
+
+class FlightBookingForm(forms.ModelForm):
+    class Meta:
+        model = Flight_booking
+        fields = ['travel_date']  # user can choose travel date others will be auto filled.  

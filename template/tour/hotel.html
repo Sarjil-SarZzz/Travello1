@@ -21,6 +21,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            flex-direction: column;
         }
 
         .card {
@@ -130,8 +131,10 @@
 
         .container {
             display: flex;
-            flex-wrap: wrap;
+            /* flex-wrap: wrap; */
             gap: 20px;
+            padding: 3em 0 3em 0;
+            /* flex: 5 5 100px; */
             justify-content: center;
             align-items: flex-start;
             padding: 20px;
@@ -148,10 +151,95 @@
             text-decoration: none;
             padding: 8px ;
         }
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.logo{
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.logo span{
+    color: rgb(0, 225, 225);
+}
+li,a ,button{
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+header
+{
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2em 0 2em 0;
+    min-height: 0vh;
+    /* background: #150578; */
+    /* background: #3943B7; */
+    /* background: #0E0E52; */
+    /* background: #4056F4; */
+    background: #470FF4;
+    /* background:rgb(24, 130, 255); */
+}
+
+.nav__links {
+    list-style: none;
+}
+
+.nav__links li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav__links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+    color: #ffffff;
+}
+
+button{
+    padding: 9px 25px;
+    background-color: rgba(0,136,169,1) ;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover{
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+
     </style>
 </head>
 
 <body>
+    <header>
+        <a href="#" class="logo">Tra<span>VellO.</span></a>
+        <nav>
+            <ul class="nav__links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'packages' %}">Packages</a></li>
+                <li><a href="{% url 'flights' %}">Flight</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="cta"><button>Log In</button></a>
+    </header>
+    
+
     <div class="container">
 
         {% for i in hotel %}

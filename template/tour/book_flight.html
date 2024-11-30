@@ -1,0 +1,8 @@
+<h2>Book Flight: {{ flight.provider_name }}</h2>
+<p>Price: {{ flight.price}}</p>
+<p>departure_airport: {{ flight.departure_airport}} </p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Book Now</button>
+</form>

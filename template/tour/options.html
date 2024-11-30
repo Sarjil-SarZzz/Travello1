@@ -1,61 +1,40 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="container">
-    <div class="card">
-        <div class="box">
-            <div class="content">
-                <h2>01</h2>
-                <h3>Flight</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam unde voluptate deserunt praesentium maiores qui ad perspiciatis porro similique harum! </p>
-                <a href="#">Read more</a>
+<head>
+    {% load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'options/options.css'%}">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="box">
+                <div class="content">
+                    <h2>01</h2>
+                    <h3>Flight</h3>
+                    <p>Here you can find your Flight Bookings</p>
+                    <a href="{% url 'view_bookings'%}">See your bookings</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="card">
-        <div class="box">
-            <div class="content">
-                <h2>02</h2>
-                <h3>Packages</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam unde voluptate deserunt praesentium maiores qui ad perspiciatis porro similique harum!  </p>
-                <a href="#">Read more</a>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="box">
-            <div class="content">
-                <h2>03</h2>
-                <h3>Car</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam unde voluptate deserunt praesentium maiores qui ad perspiciatis porro similique harum!  </p>
-                <a href="#">Read more</a>
-                
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="box">
-            <div class="content">
-                <h2>04</h2>
-                <h3>Bus</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam unde voluptate deserunt praesentium maiores qui ad perspiciatis porro similique harum!  </p>
-                <a href="#">Read more</a>
-                
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="box">
-            <div class="content">
-                <h2>05</h2>
-                <h3>Hotels</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam unde voluptate deserunt praesentium maiores qui ad perspiciatis porro similique harum!  </p>
-                <a href="#">Read more</a>
-                
+        <div class="card">
+            <div class="box">
+                <div class="content">
+                    <h2>02</h2>
+                    <h3>Packages</h3>
+                    <p>Here you can find your Package Bookings</p>
+                    <a href="{% url 'my_bookings'%}">See your bookings</a>
+                </div>
             </div>
         </div>
     </div>
 
-</div>
-{% endblock %}
+
+</body>
+
+</html>

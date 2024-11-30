@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<p> Are you sure, you eant to delete this flight</p>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <a href="{% url 'home' %}" > no </a>
+    <input type="submit" name="submit">
+</form>
+{% endblock %}

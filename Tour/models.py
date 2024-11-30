@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group
 
 # Create your models here.
 
@@ -47,48 +47,7 @@ class Booking(models.Model):
         return f"Booking{self.id} by {self.user.username}"
     
 
-
-# class Transportation(models.Model):
-#     Transportation_modes = [
-#         ('flight','flight'),
-#         ('bus','bus'),
-#         ('car','car'),
-#     ] 
-#     mode = models.CharField(max_length=10,choices=Transportation_modes)
-#     provider_name = models.CharField(max_length=100)
-#     departure_time = models.CharField()
-#     arrival_time = models.CharField()
-#     price = models.DecimalField(max_digits=10,decimal_places=2)
-
-#     class Meta:
-#         abstruct = True
-
-# class Flight(Transportation):
-#     flight_number = models.CharField(max_length=20,unique=True)
-#     departure_airport = models.CharField(max_length=20)
-#     arrival_airport = models.CharField(max_length=20)
-#     seat_capacity = models.PositiveIntegerField()
-
-#     def __str__(self):
-#         return f"Flight{self.flight_number} by {self.provider_name}" 
     
-
-# class Bus(Transportation):
-#     bus_number = models.CharField(max_length=20,unique=True)
-#     departure_station = models.CharField(max_length=20)
-#     arrival_station = models.CharField(max_length=20)
-#     seat_capacity = models.PositiveIntegerField()
-
-#     def __str__(self):
-#         return f"Bus{self.bus_number} by {self.provider_name}" 
-    
-# class Car(Transportation):
-#     car_number = models.CharField(max_length=20,unique=True)
-#     model_name = models.CharField(max_length=50)
-#     driver_name = models.CharField(max_length=100)
-
-#     def __str__(self):
-#         return f"Car{self.car_number} - {self.model_name} by {self.provider_name}"    
 
 
 class Hotel(models.Model):
@@ -125,6 +84,20 @@ class Flight(models.Model):
 
     def __str__(self):
         return f"Flight{self.flight_number} by {self.provider_name}" 
+    
+class Flight_booking(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    flight = models.ForeignKey(Flight, on_delete=models.CASCADE)    
+    booking_date = models.DateField(auto_now_add=True)
+    travel_date = models.DateField()
+    status = models.CharField(max_length=100,choices=[
+        ('confirmed','confirmed'),
+        ('cancelled','cancelled'),
+        ('pending','pending'),
+    ]) 
+
+    def __str__(self):
+        return f"Booking{self.id} by {self.user.username}"
     
 
 class Bus(models.Model):

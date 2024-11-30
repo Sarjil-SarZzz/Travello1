@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate,login as auth_login
 from django.contrib.auth import logout as auth_logout
 
 from .forms import *
+
+from .decorators import unauthenticated_user,allowed_users,admin_only
 # Create your views here.
 @login_required(login_url='login')
 def home(request):
@@ -78,10 +80,12 @@ def signup(request):
         else:
             my_user = User.objects.create_user(uname,email,pass1)
             my_user.save()
+
+            group = Group.objects.get(name='customers')  # Ensure the 'customer' group exists
+            my_user.groups.add(group)
             return redirect('login')
     return render(request,'registration/signup.html')    
       
-
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -102,7 +106,8 @@ def logout(request):
 def index(request):
     return render(request,template_name='tour/index.html')
 
-
+@allowed_users(allowed_roles=['admin'])
+@admin_only
 def create_package(request):
     form = PackageForm()
     if request.method == 'POST':
@@ -140,8 +145,13 @@ def delete_package(request,id):
     return render(request,template_name='tour\delete_package.html')
 
 
+
 def profile(request):
-    return render (request,template_name='tour/profile.html')
+    profile = Profile.objects.all()
+    context = {
+        'profile': profile,
+    }
+    return render (request,template_name='tour/profile.html',context = context)
 
 def profile_update(request):
     if request.method == 'POST':
@@ -150,7 +160,7 @@ def profile_update(request):
             form.save()
             username = request.user.username
             messages.success(request,f'{username},Your profile is updated.')
-            return redirect ('home')
+            return redirect ('profile')
     else:
         form = ProfileForm(instance=request.user.profile)
     context = {'form':form}
@@ -168,8 +178,8 @@ def book_package(request, package_id):
             booking.package = package   # Assign the selected package
             booking.status = 'pending'  # Default status
             booking.save()
-            messages.success(request, "Your booking is successful!")
-            return redirect('book_package', booking_id=booking.id)
+            return HttpResponse("your bookings is successful!!!")  
+            # return redirect('book_package', package_id=package.id)
     else:
         form = BookingForm()
     
@@ -180,3 +190,76 @@ def user_bookings(request):
     # Fetch bookings for the logged-in user
     user_bookings = Booking.objects.filter(user=request.user)
     return render(request, 'tour/my_bookings.html', {'bookings': user_bookings})
+
+
+
+def flight_details(request,id):
+    flight = Flight.objects.get(pk=id)
+    context = {
+        'flight':flight,
+    }
+    return render(request,template_name='tour/flight_details.html',context=context)
+
+
+
+def create_flight(request):
+    form = FlightForm()
+    if request.method == 'POST':
+        form = FlightForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect ('flights')
+    context = {'form':form}
+    return render(request, template_name='tour/flight_form.html',context=context)
+
+
+
+def update_flight(request,id):
+    flight = Flight.objects.get(pk = id)
+    form = FlightForm(instance= flight)
+    if request.method == 'POST':
+        form = FlightForm(request.POST,request.FILES,instance=flight)
+        if form.is_valid():
+            form.save()
+            return redirect ('flights')
+    context = {'form':form}
+    return render(request, template_name='tour/flight_form.html',context=context)
+
+
+def delete_flight(request,id):
+    flight = Flight.objects.get(pk=id)
+    if request.method == 'POST':
+        flight.delete()
+        return redirect('flights')
+    return render(request,template_name='tour/delete_flight.html')
+
+
+def book_flight(request, flight_id):
+    flight = get_object_or_404(Flight, id=flight_id)
+    
+    if request.method == "POST":
+        form = FlightBookingForm(request.POST)
+        if form.is_valid():
+            Flight_booking = form.save(commit=False)
+            Flight_booking.user = request.user  # Assign the logged-in user to the Flight_booking
+            Flight_booking.flight = flight   # Assign the selected package
+            Flight_booking.status = 'pending'  # Default status
+            Flight_booking.save()
+            return HttpResponse("Your booking is successful!")
+           
+    else:
+        form = FlightBookingForm()
+    
+    return render(request, 'tour/book_flight.html', {'form': form, 'flight': flight})
+
+
+def flight_bookings(request):
+    # Fetch bookings for the logged-in user
+    user_bookings = Flight_booking.objects.filter(user=request.user)
+    return render(request, 'tour/view_bookings.html', {'bookings': user_bookings})
+
+
+def options(request):
+    return render (request,template_name='tour/options.html')
+
+

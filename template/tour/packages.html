@@ -16,7 +16,9 @@
     {% endfor%}
     <div>
 </section>
+{% if request.user.is_staff %}
 <div class="button">
   <a class="add-package" href="{% url 'create_package' %}">Add Package</a>
 </div>
+{% endif %}
 {% endblock %}

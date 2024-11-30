@@ -9,6 +9,6 @@
                 <li><a href="#">Contact Us</a></li>
             </ul>
         </nav>
-        <a href="#" class="cta"><button>Log In</button></a>
+        <a href="{% url 'profile'%}" class="cta"><button>{{user.username}}</button></a>
     </header>
     

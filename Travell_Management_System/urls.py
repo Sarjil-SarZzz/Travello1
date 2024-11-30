@@ -47,6 +47,18 @@ urlpatterns = [
 
     path('book_package/<int:package_id>', t_views.book_package, name='book_package'),
     path('my_bookings/', t_views.user_bookings, name='my_bookings'),
+    path('view_bookings/', t_views.flight_bookings, name='view_bookings'),
+
+
+    path('create_flight/',t_views.create_flight,name="create_flight"),
+    path('update_flight/<str:id>',t_views.update_flight,name="update_flight"),
+    path('delete_flight/<str:id>',t_views.delete_flight,name="delete_flight"),
+    path('flight_details/<str:id>',t_views.flight_details,name="flight_details"),
+
+    path('book_flight/<int:flight_id>', t_views.book_flight, name='book_flight'),
+
+    path('options/', t_views.options, name='options'),
+
 
     
 
