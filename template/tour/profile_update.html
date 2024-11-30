@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Login Page</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+        .container {
+            height: 100vh;
+            background-image: url(/static/home/img/lake.jpg);
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 440px;
+            color: #fff;
+            text-align: center;
+            padding: 50px 35px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+
+        }
+
+        .card img {
+            width: 140px;
+            border-radius: 50%;
+
+        }
+
+        h2 {
+            font-size: 40px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .card p {
+            font-size: 18px;
+            margin: 10px auto;
+            max-width: 330px;
+        }
+
+        .big-cta-btn {
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            width: 150px;
+            height: 30px;
+            border-radius: 50px;
+            background-color: rgb(0, 225, 225);
+            color: rgba(0, 0, 0, 0.699);
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .big-cta-btn:hover {
+            letter-spacing: 5px;
+            background-color: white;
+
+        }
+        input{
+    display: block;
+    height: 40px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 300;
+}
+button{
+    margin-top: 14px;
+    width: 100%;
+    background-color: #7e87db;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+    </style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+
+
+            <form method="post">
+                <h3>Edit your Profile</h3>
+                {% csrf_token %}
+                <label for="username">Phone</label>
+                {{form.phone}}
+                <label for="password">Address</label>
+                {{form.address}}
+                <label for="password">Image</label>
+                {{form.image}}
+                <br>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

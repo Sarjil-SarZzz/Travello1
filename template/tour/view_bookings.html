@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+            padding: min(50px, 7%);
+            background-color: rgb(0, 225, 225);
+
+        }
+
+        h1 {
+            margin: 30px 0;
+
+        }
+
+        .card {
+            padding: 2em;
+            border: 1px solid rgb(75, 82, 92);
+            border-radius: 10px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .grid-container {
+            display: grid;
+            border: 1px solid red;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>My Flight Bookings</h1>
+    {% if bookings %}
+    <div class="grid-container">
+        <div class="card">
+
+            <ul>
+                {% for booking in bookings %}
+                <li>
+                    <strong>Flight Provider:</strong> {{ booking.flight.provider_name }}<br>
+                    <strong>Flight Number:</strong> {{ booking.flight.flight_number }}<br>
+                    <strong>Travel Date:</strong> {{ booking.travel_date }}<br>
+                    <strong>Status:</strong> {{ booking.status }}<br>
+                    <strong>Booking Date:</strong> {{ booking.booking_date }}
+                </li>
+                <hr>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>You have no flight bookings.</p>
+            
+        </div>
+    </div>
+    {% endif %}
+
+</body>
+
+</html>
