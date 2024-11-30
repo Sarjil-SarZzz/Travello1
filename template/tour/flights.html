@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            background: #e0e5ec;
+            min-height: 100vh;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: rgb(0, 225, 225);
+        }
+
+        li,
+        a,
+        button {
+            font-family: "Poppins", serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+        }
+
+        header {
+            display: flex;
+            position: relative;
+            top: 0;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+            padding: 2em 0 2em 0;
+            min-height: 0vh;
+            /* background: #150578; */
+            /* background: #3943B7; */
+            /* background: #0E0E52; */
+            /* background: #4056F4; */
+            background: #470FF4;
+            /* background:rgb(24, 130, 255); */
+        }
+
+        .nav__links {
+            list-style: none;
+        }
+
+        .nav__links li {
+            display: inline-block;
+            padding: 0px 20px;
+        }
+
+        .nav__links li a {
+            transition: all 0.3s ease 0s;
+        }
+
+        .nav__links li a:hover {
+            color: #ffffff;
+        }
+
+        button {
+            padding: 9px 25px;
+            background-color: rgba(0, 136, 169, 1);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }
+
+        button:hover {
+            color: black;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+
+        /* .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        } */
+        .flight-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .flight-card .details {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .flight-card .details .route {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .flight-card .details .timing {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .flight-card .details .badge {
+            font-size: 12px;
+            color: #fff;
+            background-color: #28a745;
+            padding: 5px 10px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .flight-card .price {
+            flex: 1;
+            text-align: right;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .flight-card .action {
+            flex: 1;
+            text-align: right;
+        }
+
+        .flight-card .action button {
+            padding: 10px 20px;
+            background-color: #0073ff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .flight-card .action button:hover {
+            background-color: #005fcc;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .flight-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .flight-card .details,
+            .flight-card .price,
+            .flight-card .action {
+                text-align: left;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            line-height: 1.2;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #bbbbbb;
+        }
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: auto;
+            background-color: #2d2e33;
+            /* background-color: black; */
+            padding: 60px 10%;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .footer-col {
+            width: 25%;
+        }
+
+        .footer-col h4 {
+            position: relative;
+            margin-bottom: 30px;
+            font-weight: 400;
+            font-size: 22px;
+            color: #f1bc0d;
+        }
+
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            /* background-color: #27c0ac; */
+            height: 2px;
+            width: 40px;
+        }
+
+        ul li:not(:last-child) {
+            margin-bottom: 8px;
+        }
+
+        ul li a {
+            display: block;
+            font-size: 19px;
+            text-transform: capitalize;
+            color: #bdb6b6;
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        ul li a:hover {
+            color: white;
+            padding-left: 2px;
+        }
+
+        .links a {
+            display: inline-block;
+            height: 44px;
+            width: 44px;
+            color: white;
+            background-color: rgba(40, 130, 214, 0.8);
+            margin: 0 8px 8px 0;
+            text-align: center;
+            line-height: 44px;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        .links a:hover {
+            color: #4d4f55;
+            background-color: white;
+        }
+
+        @media(max-width: 740px) {
+            .footer-col {
+                width: 50%;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .footer-col h4::before {
+                all: unset;
+            }
+        }
+
+        @media(max-width: 555px) {
+            .footer-col {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <a href="#" class="logo">Tra<span>VellO.</span></a>
+        <nav>
+            <ul class="nav__links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'packages' %}">Packages</a></li>
+                <li><a href="{% url 'flights' %}">Flight</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <a href="{% url 'profile'%}" class="cta"><button>{{user.username}}</button></a>
+    </header>
+
+
+
+
+
+    {% for i in flight %}
+    <div class="container flight-cards">
+
+        <div class="flight-card">
+            <div class="details">
+                <div class="route">{{i.departure_airport}}-{{i.arrival_airport}}</div>
+                <div class="timing">{{i.provider_name}}</div>
+                <div><span class="badge">seat {{i.seat_capacity}}</span></div>
+            </div>
+            <div><span>{{i.departure_time}} -- {{i.arrival_time}}</span></div>
+            <div class="price">
+                <span>৳{{i.price}}</span>
+            </div>
+            <div class="action">
+                <button><a href="{% url 'flight_details' i.id %}">BOOK NOW</a></button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% if request.user.is_staff %}
+    <div class="action">
+        <button><a href="{% url 'create_flight' %}">create</a></button>
+    </div>
+    {% endif%}
+
+    <footer>
+        <div class="footer-col">
+            <h4>Explore</h4>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Terms & Conditons</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="#"> Tour Package</a></li>
+                <li><a href="#">Flight</a></li>
+                <li><a href="#">Hotel</a></li>
+                <li><a href="#">Bus</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Useful Links</h4>
+            <ul>
+                <li><a href="#">Travel Guide</a></li>
+                <li><a href="#">Travel Advisory</a></li>
+                <li><a href="#">Visa Guide</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact Us</h4>
+            <div class="links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
